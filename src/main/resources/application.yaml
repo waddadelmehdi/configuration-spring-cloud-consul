@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: client-a
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+      config:
+        enabled: true
+        prefix: config  # Matches the key prefix in Consul
+  config:
+    import: "consul:"  # Imports properties from Consul
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh
+
+server:
+  port: 8080
